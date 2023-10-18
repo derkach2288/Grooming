@@ -1,0 +1,7 @@
+complex|BEAGLE|2|50.0
+hygiene|YORKSHIRE_TERRIER|1.5|60.0
+hygiene|PUG|1|40.0
+complex|GERMAN_SHEPHERD|3.0|40.0
+complex|POODLE|2.0|60.0
+complex|SAMOYED|4.0|150.0
+hygiene|JACK_RUSSEL|2.0|150.0

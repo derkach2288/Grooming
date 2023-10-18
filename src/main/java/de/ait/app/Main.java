@@ -1,10 +1,8 @@
 package de.ait.app;
 
-import de.ait.repositories.UsersRepository;
-import de.ait.repositories.UsersRepositoryListImpl;
-import de.ait.repositories.UsersRepositoryTextFileImpl;
-import de.ait.service.UsersService;
-import de.ait.service.UsersServiceImpl;
+import de.ait.repositories.*;
+import de.ait.service.GroomingsService;
+import de.ait.service.GroomingsServiceImpl;
 
 import java.util.Scanner;
 
@@ -17,50 +15,43 @@ public class Main {
 
 //        UsersRepository testRepository = new UsersRepositoryListImpl();
 //        UsersService usersService = new UsersServiceImpl(testRepository);
+//        GroomingsRepository testRepositiry = new GroomingsRepositoryListImpl();
+//        GroomingsService groomingsService = new GroomingsServiceImpl(testRepositiry);
 
 //
-        UsersRepository userTextFileRepository = new UsersRepositoryTextFileImpl("users.txt");
-        UsersService usersService = new UsersServiceImpl(userTextFileRepository);
+
+        GroomingsRepository groomingTextFileRepository = new GroomingsRepositoryTextImpl("groomings.txt");
+        GroomingsService groomingsService = new GroomingsServiceImpl(groomingTextFileRepository);
 
 
         while (true){
-            System.out.println("1. Вывести имена всех пользователей");
-            System.out.println("2. Вывести фамилию самого взрослого пользователя");
-            System.out.println("3. Сохранить нового пользователя");
-            System.out.println("4. Вывести средний возраст всех пользователей");
-            System.out.println("5. Вывести возраст самого высокого");
-            System.out.println("6. Вывести имя и фамилию самого низкого пользователя");
-            System.out.println("7. Выход");
+            System.out.println("1. Вывести список услуг");
+            System.out.println("2. Вывести список пород");
+            System.out.println("3. Поиск по породе");
+            System.out.println("4. Поиск по улуге");
+            System.out.println("0. Выход");
             int command = scanner.nextInt(); // считываем команду
             scanner.nextLine(); // чтобы не было бага со сканером
 
             // вызываем соответсвующие процессы в нашей пограмме
             switch (command){
                 case 1:
-                    System.out.println("Выводим имена пользователей...");
-                    System.out.println(usersService.getNames());
+                    System.out.println("Вывести список услуг...");
+                    System.out.println(groomingsService.getTitles());
                     break;
                 case 2:
-                    System.out.println("Выводим фамилию самого старшего пользователя...");
-                    System.out.println(usersService.getSecondNameOfOldest());
+                    System.out.println("Вывести список пород...");
+                    System.out.println(groomingsService.gerBreads());
                     break;
                 case 3:
-                    System.out.println("...");
-                    // здесь пишем код
+                    System.out.println("Введите породу");
+                    System.out.println(groomingsService.findBread(scanner.nextLine().toUpperCase()));
                     break;
                 case 4:
-                    System.out.println("...");
-                    // здесь пишем код
+                    System.out.println("Введите услугу");
+                    System.out.println(groomingsService.findGroomingType(scanner.nextLine()));
                     break;
-                case 5:
-                    System.out.println("...");
-                    // здесь пишем код
-                    break;
-                case 6:
-                    System.out.println("...");
-                    // здесь пишем код
-                    break;
-                case 7:
+                case 0:
                     System.out.println("...");
                     System.exit(0); // выходим из программы
                     break;
