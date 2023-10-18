@@ -1,0 +1,7 @@
+Service
+
+String title;
+String Breed;
+Period period;
+double price;
+
