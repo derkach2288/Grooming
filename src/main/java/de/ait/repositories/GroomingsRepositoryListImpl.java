@@ -19,24 +19,8 @@ public class GroomingsRepositoryListImpl implements GroomingsRepository{
     }
 
     @Override
-    public void addGrooming(String lineGrooming) {
-        Grooming newGrooming = parsLine(lineGrooming);
-        groomings.add(newGrooming);
+    public void save(Grooming grooming) {
+        groomings.add(grooming);
     }
 
-//    @Override
-//    public void save(Grooming grooming) {
-//        groomings.add(grooming);
-//    }
-
-    private Grooming parsLine(String lineGrooming) {
-        String[] parsed = lineGrooming.split("\\|");
-        String title = parsed[0];
-        String breeds = parsed[1];
-        String period = parsed[2];
-        double price = Double.parseDouble(parsed[3]);
-        String groomingId = UUID.randomUUID().toString();
-
-        return new Grooming(title, breeds, period, price, groomingId);
-    }
 }
