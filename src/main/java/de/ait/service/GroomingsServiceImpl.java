@@ -58,13 +58,37 @@ public class GroomingsServiceImpl implements GroomingsService {
     }
 
     @Override
-    public void add(GroomingDto groomingDto) {
-        Grooming grooming = new Grooming(groomingDto.getTitle(),
-                groomingDto.getBreed(),
-                groomingDto.getPeriod(),
-                groomingDto.getPrice(),
-                UUID.randomUUID().toString());
-        groomingsRepository.save(grooming);
+    public List<Grooming> findAll() {
+        return groomingsRepository.findAll();
     }
+
+    @Override
+    public void add(GroomingDto groomingDto) {
+
+        if (containsThisBreed(groomingDto)){
+            System.out.println("ACHTUNG!!! Такая порода уже есть!");
+        } else {
+            Grooming grooming = new Grooming(groomingDto.getTitle(),
+                    groomingDto.getBreed(),
+                    groomingDto.getPeriod(),
+                    groomingDto.getPrice(),
+                    UUID.randomUUID().toString());
+            groomingsRepository.save(grooming);
+        }
+    }
+
+    private boolean containsThisBreed(GroomingDto groomingDto) {
+        String newBread = groomingDto.getBreed();
+        boolean containsBread = groomingsRepository.findAll().stream()
+                .anyMatch(grooming -> grooming.getBreed().equals(newBread));
+//        boolean containsBread = groomingsRepository.findAll().stream()
+//                .anyMatch(grooming -> {
+//                    return grooming.getBreed().equals(newBread) && grooming.getTitle().equals(groomingDto.getTitle());
+//                });
+
+        return containsBread;
+
+    }
+
 
 }

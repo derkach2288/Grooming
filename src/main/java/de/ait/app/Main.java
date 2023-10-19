@@ -11,7 +11,6 @@ import java.util.regex.Pattern;
 public class Main {
 
     public static void main(String[] args) {
-//        groomingTextFileRepository.addGrooming("hygiene|SPITZ|2.0|80.0");
         Scanner scanner = new Scanner(System.in);
         int command;
 
@@ -72,7 +71,7 @@ public class Main {
                         break;
                     case 5:
                         System.out.println("Прейскурант:");
-                        groomingTextFileRepository.findAll().stream().forEach(s -> System.out.println(s));
+                        groomingsService.findAll().stream().forEach(s -> System.out.println(s));
                         break;
 
                     case 0:
@@ -118,7 +117,8 @@ public class Main {
                     }
                     case 5 -> {
                         System.out.println("Прейскурант:");
-                        groomingTextFileRepository.findAll().forEach(System.out::println);
+                        groomingsService.findAll().stream().forEach(s -> System.out.println(s));
+
                     }
                     case 6 -> {
                         System.out.println("6. Добавьте услугу");
