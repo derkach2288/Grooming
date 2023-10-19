@@ -37,7 +37,8 @@ public class GroomingsRepositoryTextImpl implements GroomingsRepository{
     public void save(Grooming grooming) {
 //        String newGrooming = lineGrooming + "|" + UUID.randomUUID().toString();
 
-        try(FileWriter fileWriter = new FileWriter(fileName, true); // append true - добавляет в еонец файла, не перезаписывает
+        try(FileWriter fileWriter = new FileWriter(fileName, true); // append true - добавляет в конец файла, не
+                                                                           // перезаписывает
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
 
             bufferedWriter.newLine();
