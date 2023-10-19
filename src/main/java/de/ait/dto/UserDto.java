@@ -1,26 +1,22 @@
-package de.ait.models;
+package de.ait.dto;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class User {
+public class UserDto {
     private String firstName;
     private String secondName;
     private String breed;
     private String nickname;
     private String address;
     private String eMail;
-    String userId;
 
-    public User(String firstName, String secondName, String breed, String nickname, String address, String eMail, String userId) {
+    public UserDto(String firstName, String secondName, String breed, String nickname, String address, String eMail) {
         this.firstName = firstName;
         this.secondName = secondName;
         this.breed = breed;
         this.nickname = nickname;
         this.address = address;
         this.eMail = eMail;
-        this.userId = userId;
     }
+
 
 
     public String getFirstName() {
@@ -71,24 +67,15 @@ public class User {
         this.eMail = eMail;
     }
 
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
     @Override
     public String toString() {
-        return "User{" +
+        return "UserDto{" +
                 "firstName='" + firstName + '\'' +
                 ", secondName='" + secondName + '\'' +
                 ", breed='" + breed + '\'' +
                 ", nickname='" + nickname + '\'' +
                 ", address='" + address + '\'' +
                 ", eMail='" + eMail + '\'' +
-                ", userId='" + userId + '\'' +
                 '}';
     }
 }

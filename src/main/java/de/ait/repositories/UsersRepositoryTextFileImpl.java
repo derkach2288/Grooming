@@ -33,19 +33,27 @@ public class UsersRepositoryTextFileImpl implements UsersRepository{
     }
 
     @Override
-    public void addUser(String lineUser) {
-        String newUser = lineUser + "|" + UUID.randomUUID().toString();
-
-        try(FileWriter fileWriter = new FileWriter(fileName, true);
+    public void save(User user) {
+        try(FileWriter fileWriter = new FileWriter(fileName, true); // append true - добавляет в конец файла, не
+            // перезаписывает
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
 
             bufferedWriter.newLine();
-            bufferedWriter.write(newUser);
+            bufferedWriter.write(convert(user));
 
         } catch (IOException e) {
             System.out.println("Произошла ошибка");
         }
+
     }
+
+    private String convert(User user) {
+        String line = user.getFirstName() + "|" + user.getSecondName() + "|"
+                + user.getBreed() + "|" + user.getNickname() + "|" + user.getAddress()
+                + "|" + user.geteMail() + "|" + user.getUserId();
+        return line;
+    }
+
 
     public static User parsLine(String line){
         String[] parsed = line.split("\\|");

@@ -7,5 +7,5 @@ import java.util.List;
 public interface UsersRepository {
     public List<User> findAll();
 
-    void addUser(String lineUser);
+    void save(User user);
 }
