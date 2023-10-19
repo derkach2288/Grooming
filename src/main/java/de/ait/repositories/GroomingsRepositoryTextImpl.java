@@ -3,14 +3,13 @@ package de.ait.repositories;
 import de.ait.models.Grooming;
 import de.ait.models.User;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class GroomingsRepositoryTextImpl implements GroomingsRepository{
     String fileName; // имя файла
+
 
     public GroomingsRepositoryTextImpl(String fileName) {
         this.fileName = fileName;
@@ -31,6 +30,20 @@ public class GroomingsRepositoryTextImpl implements GroomingsRepository{
             System.out.println("Произошла ошибка");
         }
         return groomings;
+
+    }
+
+    @Override
+    public void addGrooming(String lineGrooming) {
+        try(FileWriter fileWriter = new FileWriter(fileName, true); // append true - добавляет в еонец файла, не перезаписывает
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
+
+            bufferedWriter.newLine();
+            bufferedWriter.write(lineGrooming);
+
+        } catch (IOException e) {
+            System.out.println("Произошла ошибка");
+        }
 
     }
 

@@ -5,3 +5,4 @@ complex|GERMAN_SHEPHERD|3.0|40.0
 complex|POODLE|2.0|60.0
 complex|SAMOYED|4.0|150.0
 hygiene|JACK_RUSSEL|2.0|150.0
+hygiene|SPITZ|2.0|80.0

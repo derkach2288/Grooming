@@ -13,8 +13,6 @@ public class Main {
 
         // конфигурируем приложение - с какими имплементациями будем работать
 
-//        UsersRepository testRepository = new UsersRepositoryListImpl();
-//        UsersService usersService = new UsersServiceImpl(testRepository);
 //        GroomingsRepository testRepositiry = new GroomingsRepositoryListImpl();
 //        GroomingsService groomingsService = new GroomingsServiceImpl(testRepositiry);
 
@@ -23,12 +21,15 @@ public class Main {
         GroomingsRepository groomingTextFileRepository = new GroomingsRepositoryTextImpl("groomings.txt");
         GroomingsService groomingsService = new GroomingsServiceImpl(groomingTextFileRepository);
 
+//        groomingTextFileRepository.addGrooming("hygiene|SPITZ|2.0|80.0");
+
 
         while (true){
             System.out.println("1. Вывести список услуг");
             System.out.println("2. Вывести список пород");
             System.out.println("3. Поиск по породе");
             System.out.println("4. Поиск по улуге");
+            System.out.println("5. Вывести весь прейскурант");
             System.out.println("0. Выход");
             int command = scanner.nextInt(); // считываем команду
             scanner.nextLine(); // чтобы не было бага со сканером
@@ -51,6 +52,11 @@ public class Main {
                     System.out.println("Введите услугу");
                     System.out.println(groomingsService.findGroomingType(scanner.nextLine()));
                     break;
+                case 5:
+                    System.out.println("Прейскурант:");
+                    groomingTextFileRepository.findAll().stream().forEach(s -> System.out.println(s));
+                    break;
+
                 case 0:
                     System.out.println("...");
                     System.exit(0); // выходим из программы

@@ -16,4 +16,19 @@ public class GroomingsRepositoryListImpl implements GroomingsRepository{
     public List<Grooming> findAll() {
         return groomings;
     }
+
+    @Override
+    public void addGrooming(String lineGrooming) {
+        Grooming newGrooming = parsLine(lineGrooming);
+        groomings.add(newGrooming);
+    }
+
+    private Grooming parsLine(String lineGrooming) {
+        String[] parsed = lineGrooming.split("\\|");
+        String title = parsed[0];
+        String breeds = parsed[1];
+        String period = parsed[2];
+        double price = Double.parseDouble(parsed[3]);
+        return new Grooming(title, breeds, period, price);
+    }
 }
