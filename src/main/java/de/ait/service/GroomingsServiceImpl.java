@@ -26,7 +26,7 @@ public class GroomingsServiceImpl implements GroomingsService {
     }
 
     @Override
-    public List<String> gerBreads() {
+    public List<String> getBreads() {
         List<Grooming> groomings = groomingsRepository.findAll();
         return groomings.stream().map(g -> g.getBreed()).toList();
     }
@@ -57,14 +57,14 @@ public class GroomingsServiceImpl implements GroomingsService {
 
     }
 
-//    @Override
-//    public void add(GroomingDto groomingDto) {
-//        Grooming grooming = new Grooming(groomingDto.getTitle(),
-//                groomingDto.getBreed(),
-//                groomingDto.getPeriod(),
-//                groomingDto.getPrice(),
-//                UUID.randomUUID().toString());
-//
-//        groomingsRepository.save(grooming);
-//    }
+    @Override
+    public void add(GroomingDto groomingDto) {
+        Grooming grooming = new Grooming(groomingDto.getTitle(),
+                groomingDto.getBreed(),
+                groomingDto.getPeriod(),
+                groomingDto.getPrice(),
+                UUID.randomUUID().toString());
+        groomingsRepository.save(grooming);
+    }
+
 }

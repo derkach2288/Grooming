@@ -34,13 +34,14 @@ public class GroomingsRepositoryTextImpl implements GroomingsRepository{
     }
 
     @Override
-    public void addGrooming(String lineGrooming) {
-        String newGrooming = lineGrooming + "|" + UUID.randomUUID().toString();
+    public void save(Grooming grooming) {
+//        String newGrooming = lineGrooming + "|" + UUID.randomUUID().toString();
+
         try(FileWriter fileWriter = new FileWriter(fileName, true); // append true - добавляет в еонец файла, не перезаписывает
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
 
             bufferedWriter.newLine();
-            bufferedWriter.write(newGrooming);
+            bufferedWriter.write(convert(grooming));
 
         } catch (IOException e) {
             System.out.println("Произошла ошибка");
@@ -48,10 +49,6 @@ public class GroomingsRepositoryTextImpl implements GroomingsRepository{
 
     }
 
-//    @Override
-//    public void save(Grooming grooming) {
-//
-//    }
 
     public static Grooming parsLine(String line){
         String[] parsed = line.split("\\|");
@@ -61,6 +58,12 @@ public class GroomingsRepositoryTextImpl implements GroomingsRepository{
         double price = Double.parseDouble(parsed[3]);
         String groomingId = parsed[4];
         return new Grooming(title, breeds, period, price, groomingId);
+    }
+
+    public static String convert(Grooming grooming){
+        String line = grooming.getTitle() + "|" + grooming.getBreed() + "|" +grooming.getPeriod()
+                + "|" + grooming.getPrice() + "|" + grooming.getGroomingId();
+        return line;
     }
 
 }

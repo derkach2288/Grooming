@@ -5,6 +5,7 @@ import de.ait.models.User;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class UsersRepositoryTextFileImpl implements UsersRepository{
     String fileName; // имя файла
@@ -33,11 +34,13 @@ public class UsersRepositoryTextFileImpl implements UsersRepository{
 
     @Override
     public void addUser(String lineUser) {
+        String newUser = lineUser + "|" + UUID.randomUUID().toString();
+
         try(FileWriter fileWriter = new FileWriter(fileName, true);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
 
             bufferedWriter.newLine();
-            bufferedWriter.write(lineUser);
+            bufferedWriter.write(newUser);
 
         } catch (IOException e) {
             System.out.println("Произошла ошибка");
@@ -52,6 +55,7 @@ public class UsersRepositoryTextFileImpl implements UsersRepository{
         String nickname = parsed[3];
         String address = parsed[4];
         String eMail = parsed[5];
-        return new User(firstName, secondName, breed, nickname, address, eMail);
+        String userId = parsed[6];
+        return new User(firstName, secondName, breed, nickname, address, eMail, userId);
     }
 }

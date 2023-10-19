@@ -42,7 +42,7 @@ public class Main {
                     break;
                 case 2:
                     System.out.println("Вывести список пород...");
-                    System.out.println(groomingsService.gerBreads());
+                    System.out.println(groomingsService.getBreads());
                     break;
                 case 3:
                     System.out.println("Введите породу");

@@ -4,6 +4,7 @@ import de.ait.models.User;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class UserRepositoryListImpl implements UsersRepository{
 
@@ -34,6 +35,7 @@ public class UserRepositoryListImpl implements UsersRepository{
         String nickname = parsed[3];
         String address = parsed[4];
         String eMail = parsed[5];
-        return new User(firstName, secondName, breed, nickname, address, eMail);
+        String userId = UUID.randomUUID().toString();
+        return new User(firstName, secondName, breed, nickname, address, eMail, userId);
     }
 }
