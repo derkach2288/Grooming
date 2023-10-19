@@ -8,4 +8,7 @@ import java.util.List;
 public interface GroomingsRepository {
     List<Grooming> findAll();
     void addGrooming(String grooming);
+
+//    void save(Grooming grooming);
+
 }

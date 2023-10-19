@@ -6,6 +6,7 @@ import de.ait.models.User;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class GroomingsRepositoryTextImpl implements GroomingsRepository{
     String fileName; // имя файла
@@ -34,11 +35,12 @@ public class GroomingsRepositoryTextImpl implements GroomingsRepository{
 
     @Override
     public void addGrooming(String lineGrooming) {
+        String newGrooming = lineGrooming + "|" + UUID.randomUUID().toString();
         try(FileWriter fileWriter = new FileWriter(fileName, true); // append true - добавляет в еонец файла, не перезаписывает
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
 
             bufferedWriter.newLine();
-            bufferedWriter.write(lineGrooming);
+            bufferedWriter.write(newGrooming);
 
         } catch (IOException e) {
             System.out.println("Произошла ошибка");
@@ -46,13 +48,19 @@ public class GroomingsRepositoryTextImpl implements GroomingsRepository{
 
     }
 
+//    @Override
+//    public void save(Grooming grooming) {
+//
+//    }
+
     public static Grooming parsLine(String line){
         String[] parsed = line.split("\\|");
         String title = parsed[0];
         String breeds = parsed[1];
         String period = parsed[2];
         double price = Double.parseDouble(parsed[3]);
-        return new Grooming(title, breeds, period, price);
+        String groomingId = parsed[4];
+        return new Grooming(title, breeds, period, price, groomingId);
     }
 
 }

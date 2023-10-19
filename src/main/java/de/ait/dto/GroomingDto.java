@@ -1,24 +1,16 @@
-package de.ait.models;
+package de.ait.dto;
 
-public class Grooming {
+public class GroomingDto {
     String title;
     String breed;
     String period;
     double price;
-    String groomingId;
 
-    public Grooming(String title, String breed, String period, double price) {
+    public GroomingDto(String title, String breed, String period, double price) {
         this.title = title;
         this.breed = breed;
         this.period = period;
         this.price = price;
-    }
-    public Grooming(String title, String breed, String period, double price, String groomingId) {
-        this.title = title;
-        this.breed = breed;
-        this.period = period;
-        this.price = price;
-        this.groomingId = groomingId;
     }
 
     public String getTitle() {
@@ -53,22 +45,13 @@ public class Grooming {
         this.price = price;
     }
 
-    public String getGroomingId() {
-        return groomingId;
-    }
-
-    public void setGroomingId(String groomingId) {
-        this.groomingId = groomingId;
-    }
-
     @Override
     public String toString() {
         return "Grooming{" +
                 "title='" + title + '\'' +
-                ", breed='" + breed + '\'' +
+                ", breeds='" + breed + '\'' +
                 ", period='" + period + '\'' +
                 ", price=" + price +
-                ", groomingId='" + groomingId + '\'' +
                 '}';
     }
 }

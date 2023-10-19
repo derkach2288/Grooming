@@ -1,5 +1,6 @@
 package de.ait.service;
 
+import de.ait.dto.GroomingDto;
 import de.ait.models.Grooming;
 import de.ait.models.User;
 import de.ait.repositories.GroomingsRepository;
@@ -7,10 +8,12 @@ import de.ait.repositories.GroomingsRepository;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Set;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 public class GroomingsServiceImpl implements GroomingsService {
     GroomingsRepository groomingsRepository;
+    GroomingDto groomingDto;
 
     public GroomingsServiceImpl(GroomingsRepository groomingsRepository) {
         this.groomingsRepository = groomingsRepository;
@@ -53,4 +56,15 @@ public class GroomingsServiceImpl implements GroomingsService {
         } else return groming.getTitle() + ", " +groming.getPeriod();
 
     }
+
+//    @Override
+//    public void add(GroomingDto groomingDto) {
+//        Grooming grooming = new Grooming(groomingDto.getTitle(),
+//                groomingDto.getBreed(),
+//                groomingDto.getPeriod(),
+//                groomingDto.getPrice(),
+//                UUID.randomUUID().toString());
+//
+//        groomingsRepository.save(grooming);
+//    }
 }
