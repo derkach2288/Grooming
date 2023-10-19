@@ -16,14 +16,11 @@ public class GroomingsServiceImpl implements GroomingsService {
         this.groomingsRepository = groomingsRepository;
     }
 
-
-
     @Override
     public Set<String> getTitles() {
         List<Grooming> groomings = groomingsRepository.findAll();
         return groomings.stream().map(g -> g.getTitle()).collect(Collectors.toSet());
     }
-
 
     @Override
     public List<String> gerBreads() {

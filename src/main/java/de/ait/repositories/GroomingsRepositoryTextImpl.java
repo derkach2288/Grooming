@@ -10,7 +10,6 @@ import java.util.List;
 public class GroomingsRepositoryTextImpl implements GroomingsRepository{
     String fileName; // имя файла
 
-
     public GroomingsRepositoryTextImpl(String fileName) {
         this.fileName = fileName;
     }
