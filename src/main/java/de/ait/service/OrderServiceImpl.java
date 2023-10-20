@@ -22,7 +22,7 @@ public class OrderServiceImpl implements OrderService{
     @Override
     public List<Order> searchByUserID(String userId) {
         List<Order> list = orderRepository.findAll().stream()
-                .filter(o -> o.getOrderId().equals(userId))
+                .filter(o -> o.getUserId().equals(userId))
                 .toList();
         return list;
     }

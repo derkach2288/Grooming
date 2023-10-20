@@ -1,7 +1,9 @@
 package de.ait.app;
 
 import de.ait.dto.GroomingDto;
+import de.ait.dto.OrderDto;
 import de.ait.dto.UserDto;
+import de.ait.models.User;
 import de.ait.models.UserCredential;
 import de.ait.repositories.*;
 import de.ait.service.*;
@@ -147,6 +149,7 @@ public class Main {
                 case 6 -> {
                     System.out.println("Заказать услугу из списка");
                     groomingsService.printAllGroomings();
+                    newOrder();
                 }
                 case 0 -> {
                     System.out.println("выход из программы");
@@ -155,6 +158,28 @@ public class Main {
                 default -> System.out.println("Нет такой команды");
             }
         }
+    }
+
+    private static void newOrder() {
+        OrderRepository orderRepository = new OrderRepositoryTextFileImpl("orders.txt");
+        OrderService orderService = new OrderServiceImpl(orderRepository);
+        UsersRepository usersRepositoryTextFile = new UsersRepositoryTextFileImpl("users.txt");
+        UsersService usersService = new UsersServiceImpl(usersRepositoryTextFile);
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Введите groomingId: ");
+        String groomingId = scanner.nextLine();
+        System.out.println("Введите свой userId из списка: ");
+        usersService.printAllUsers();
+        String userId = scanner.nextLine();
+        System.out.println("Введите дату и время в ормате: dd-MM-yyyy, HH-mm  ");
+        String dateTime = scanner.nextLine();
+        OrderDto orderDto = new OrderDto(groomingId, userId, dateTime);
+        orderService.add(orderDto);
+        System.out.println("Ваши заказы:");
+        orderService.searchByUserID(userId).forEach(order -> System.out.println(order));
+
     }
 
     public static void adminAPI() {

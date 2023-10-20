@@ -58,8 +58,13 @@ public class OrderRepositoryTextFileImpl implements OrderRepository {
         }
     }
     private String convert(Order order) {
+        DateTimeFormatter formatterDate =
+                DateTimeFormatter.ofPattern("dd-MM-yyy");
+        DateTimeFormatter formatterTime =
+                DateTimeFormatter.ofPattern("HH-mm");
+
         String line = order.getOrderId() + "|" + order.getGroomingId() + "|"
-                + order.getUserId() + "|" + order.getDateTime();
+                + order.getUserId() + "|" + formatterDate.format(order.getDateTime()) + ", " + formatterTime.format(order.getDateTime());
         return line;
     }
 
