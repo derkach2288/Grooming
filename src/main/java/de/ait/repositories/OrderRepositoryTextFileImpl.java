@@ -4,6 +4,10 @@ import de.ait.models.Order;
 import de.ait.models.User;
 
 import java.io.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,11 +35,6 @@ public class OrderRepositoryTextFileImpl implements OrderRepository {
         return orders;
     }
 
-    private String convert(Order order) {
-        String line = order.getOrderId() + "|" + order.getGroomingId() + "|"
-                + order.getUserId() + "|" + order.getDateTime();
-        return line;
-    }
 
     public static Order parsLine(String str) {
         String[] parsed = str.split("\\|");
@@ -48,9 +47,8 @@ public class OrderRepositoryTextFileImpl implements OrderRepository {
 
     @Override
     public void save(Order order) {
-        try (FileWriter fileWriter = new FileWriter(fileName, true);
-             // перезаписывает
-             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
+        try(FileWriter fileWriter = new FileWriter(fileName, true); // append true - добавляет в конец файла, не
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
 
             bufferedWriter.newLine();
             bufferedWriter.write(convert(order));
@@ -59,4 +57,10 @@ public class OrderRepositoryTextFileImpl implements OrderRepository {
             System.out.println("Произошла ошибка");
         }
     }
+    private String convert(Order order) {
+        String line = order.getOrderId() + "|" + order.getGroomingId() + "|"
+                + order.getUserId() + "|" + order.getDateTime();
+        return line;
+    }
+
 }
