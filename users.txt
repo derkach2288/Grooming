@@ -1,4 +1,3 @@
-Alisher|Khamodov|29|1.72
-Oleksandr|Derkach|34|1.88
-Pavel|Pavlov|30|1.80
-Konstantin|Ustyuzhnin|32|1.80
+Name1|Surname1|BEAGLE|Sniff|Forststraße 3, 15645 Berli|name1.name2@gmail.com|0d722f86-8336-4f9e-9621-a346130c34d9
+Name2|Surname2|GERMAN SHEPHERD|Lord|Hauptstr. 25, 10006 Berlin|name2.surname2@gmail.com|3fa05c67-a69b-4a40-b388-ad413bf60e9d
+Name3|Surname3|SAMOYED|Snowy|Leipziger str. 17, 17985 Berlin|name3.surname3@gmail.com|91d97c44-b908-467c-8522-1a922067ae25

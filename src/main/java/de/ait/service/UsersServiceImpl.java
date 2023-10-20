@@ -29,7 +29,6 @@ public class UsersServiceImpl implements UsersService {
                 .findFirst()
                 .orElseGet(() -> null);
 
-
         return user == null ? "Такой фамилии нет" : user.toString();
     }
 

@@ -1,11 +1,11 @@
 package de.ait.models;
 
-public class AdminCredentials {
+public class UserCredential {
     private String login;
     private String password;
 
-    public AdminCredentials(String adminID, String password) {
-        this.login = adminID;
+    public UserCredential(String login, String password) {
+        this.login = login;
         this.password = password;
     }
 
@@ -27,6 +27,6 @@ public class AdminCredentials {
 
     @Override
     public String toString() {
-        return "AdminCredentials{" + "adminID: " + login + '\'' + ", password: " + password + '\'' + '}';
+        return "UserCredentials{" + "login='" + login + '\'' + ", password='" + password + '\'' + '}';
     }
 }
