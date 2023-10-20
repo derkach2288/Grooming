@@ -45,21 +45,21 @@ public class GroomingsServiceImpl implements GroomingsService {
     }
 
     @Override
-    public String findGroomingType(String groom) {
+    public void findGroomingType(String groom) {
         List<Grooming> groomings = groomingsRepository.findAll();
-        Grooming groming = groomings.stream()
-                .filter(grooming -> grooming.getTitle().equals(groom)).findFirst()
-                .orElseGet(() -> null);
-
-        if (groming == null){
-            return "Такой услуги нет";
-        } else return groming.getTitle() + ", " +groming.getPeriod();
-
+        groomings.stream()
+                .filter(grooming -> grooming.getTitle().equals(groom))
+                .forEach(grooming -> System.out.println(grooming));
     }
 
     @Override
     public List<Grooming> findAll() {
         return groomingsRepository.findAll();
+    }
+
+    @Override
+    public void printAllGroomings() {
+        groomingsRepository.findAll().forEach(grooming -> System.out.println(grooming));
     }
 
     @Override

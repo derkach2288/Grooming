@@ -8,6 +8,7 @@ import java.util.List;
 public interface OrderService {
     List<Order> findAll();
     List<Order> searchByUserID(String userID);
+    void printAllOrders();
     void add(OrderDto orderDto);
 
 }

@@ -138,15 +138,15 @@ public class Main {
                 }
                 case 4 -> {
                     System.out.println("4. Поиск по услуге. Введите услугу");
-                    System.out.println(groomingsService.findGroomingType(scanner.nextLine()));
+                    groomingsService.findGroomingType(scanner.nextLine());
                 }
                 case 5 -> {
                     System.out.println("Прейскурант:");
-                    groomingsService.findAll().stream().forEach(s -> System.out.println(s));
+                    groomingsService.printAllGroomings();
                 }
                 case 6 -> {
                     System.out.println("Заказать услугу из списка");
-                    System.out.println(groomingsService.findAll());
+                    groomingsService.printAllGroomings();
                 }
                 case 0 -> {
                     System.out.println("выход из программы");
@@ -186,11 +186,11 @@ public class Main {
                 }
                 case 4 -> {
                     System.out.println("4. Поиск по услуге. Введите услугу");
-                    System.out.println(groomingsService.findGroomingType(scanner.nextLine()));
+                    groomingsService.findGroomingType(scanner.nextLine());
                 }
                 case 5 -> {
                     System.out.println("Прейскурант:");
-                    groomingsService.findAll().stream().forEach(s -> System.out.println(s));
+                    groomingsService.printAllGroomings();
 
                 }
                 case 6 -> {

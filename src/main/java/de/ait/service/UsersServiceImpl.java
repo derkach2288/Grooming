@@ -16,13 +16,13 @@ public class UsersServiceImpl implements UsersService {
     }
 
     @Override
-    public List<String> getSecondName() {
+    public List<String> getSecondNames() {
         List<User> users = usersRepository.findAll();
         return users.stream().map(u -> u.getSecondName()).toList();
     }
 
     @Override
-    public String findSecondName(String secondName) {
+    public String findUserBySecondName(String secondName) {
         List<User> users = usersRepository.findAll();
         User user = users.stream()
                 .filter(u -> u.getSecondName().equals(secondName))
@@ -35,6 +35,11 @@ public class UsersServiceImpl implements UsersService {
     @Override
     public List<User> findAll() {
         return usersRepository.findAll();
+    }
+
+    @Override
+    public void printAllUsers() {
+        usersRepository.findAll().forEach(user -> System.out.println(user));
     }
 
     @Override

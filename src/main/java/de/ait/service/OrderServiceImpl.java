@@ -27,6 +27,11 @@ public class OrderServiceImpl implements OrderService{
         return list;
     }
 
+    @Override
+    public void printAllOrders() {
+        orderRepository.findAll().forEach(order -> System.out.println(order));
+    }
+
 
     @Override
     public void add(OrderDto orderDto) {
