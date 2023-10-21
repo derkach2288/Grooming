@@ -173,7 +173,7 @@ public class Main {
         System.out.println("Введите свой userId из списка: ");
         usersService.printAllUsers();
         String userId = scanner.nextLine();
-        System.out.println("Введите дату и время в ормате: dd-MM-yyyy, HH-mm  ");
+        System.out.println("Введите дату и время в формате: dd-MM-yyyy, HH-mm  ");
         String dateTime = scanner.nextLine();
         OrderDto orderDto = new OrderDto(groomingId, userId, dateTime);
         orderService.add(orderDto);
