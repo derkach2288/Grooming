@@ -9,9 +9,9 @@ import java.util.UUID;
 
 public class GroomingsRepositoryListImpl implements GroomingsRepository{
     private List<Grooming> groomings = new ArrayList<>(List.of(
-            new Grooming("complex", "BEAGLE", "2.0", 50.0, UUID.randomUUID().toString()),
-            new Grooming("hygiene", "YORKSHIRE_TERRIER", "1.5", 60.0, UUID.randomUUID().toString()),
-            new Grooming("hygiene", "PUG", "1.0", 40.0, UUID.randomUUID().toString())
+            new Grooming("complex", "BEAGLE", "2.0", 50.0, "1111"),
+            new Grooming("hygiene", "YORKSHIRE_TERRIER", "1.5", 60.0, "2222"),
+            new Grooming("hygiene", "PUG", "1.0", 40.0, "3333")
     ));
     @Override
     public List<Grooming> findAll() {

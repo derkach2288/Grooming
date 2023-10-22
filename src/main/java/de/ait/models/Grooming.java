@@ -1,5 +1,7 @@
 package de.ait.models;
 
+import java.util.Objects;
+
 public class Grooming {
     String title;
     String breed;
@@ -70,5 +72,32 @@ public class Grooming {
                 ", price=" + price +
                 ", groomingId='" + groomingId + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Grooming grooming = (Grooming) o;
+
+        if (Double.compare(grooming.price, price) != 0) return false;
+        if (!Objects.equals(title, grooming.title)) return false;
+        if (!Objects.equals(breed, grooming.breed)) return false;
+        if (!Objects.equals(period, grooming.period)) return false;
+        return Objects.equals(groomingId, grooming.groomingId);
+    }
+
+    @Override
+    public int hashCode() {
+        int result;
+        long temp;
+        result = title != null ? title.hashCode() : 0;
+        result = 31 * result + (breed != null ? breed.hashCode() : 0);
+        result = 31 * result + (period != null ? period.hashCode() : 0);
+        temp = Double.doubleToLongBits(price);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        result = 31 * result + (groomingId != null ? groomingId.hashCode() : 0);
+        return result;
     }
 }
