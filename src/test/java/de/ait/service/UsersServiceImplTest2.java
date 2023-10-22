@@ -28,14 +28,24 @@ class UsersServiceImplTest2 {
 
     @Test
     void findUserBySecondName() {
-        List<String> secondNames = usersService.getSecondNames();
-        String actual = "";
-        for (String sn: secondNames){
-            if (sn.equals("Smith")){
-                actual = sn;
-            }
-        }
-        assertEquals("Smith", actual);
+//        List<String> secondNames = usersService.getSecondNames();
+//        String actual = "";
+//        for (String sn: secondNames){
+//            if (sn.equals("Smith")){
+//                actual = sn;
+//            }
+//        }
+        List<User> usersList = new ArrayList<>(List.of(
+                new User("John", "Smith", "PUG", "Dolly"
+                        ,"23456, Stuttgart, Hauptstrasse 3", "dolly@gmail.com", "01111"),
+                new User("Jack", "Russel", "JACK_RUSSEL", "Jacky",
+                        "12345, Berlin, Hauptstrasse 4", "Jacky@gmail.com", "02222"),
+                new User("Max", "Hoffman", "SAMOYED", "Gin",
+                        "43268, Hamburg, Hauptstrasse 8", "gin@gmail.com", "03333")
+
+        ));
+        String actual = usersService.getUserBySecondName("Smith").toString();
+        assertEquals(usersList.get(0).toString(), actual);
     }
 
     @Test
