@@ -150,7 +150,7 @@ public class Main {
                 case 6 -> {
                     System.out.println("Заказать услугу из списка");
                     groomingsService.printAllGroomings();
-                    newOrder();
+//                    newOrder();
                     newOrder2();
                 }
                 case 0 -> {
