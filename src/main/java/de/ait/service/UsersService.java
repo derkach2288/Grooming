@@ -11,7 +11,7 @@ public interface UsersService {
     String findUserBySecondName(String secondName);
     List<User> findAll();
     void printAllUsers();
-
+    User getUserBySecondName(String secondName);
     void add(UserDto userDto);
 
 }

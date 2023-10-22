@@ -32,6 +32,15 @@ public class UsersServiceImpl implements UsersService {
         return user == null ? "Такой фамилии нет" : user.toString();
     }
 
+    public User getUserBySecondName(String secondName) {
+        List<User> users = usersRepository.findAll();
+        User user = users.stream()
+                .filter(u -> u.getSecondName().equals(secondName))
+                .findFirst()
+                .orElseGet(() -> null);
+        return user;
+    }
+
     @Override
     public List<User> findAll() {
         return usersRepository.findAll();

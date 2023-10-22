@@ -3,6 +3,7 @@ package de.ait.app;
 import de.ait.dto.GroomingDto;
 import de.ait.dto.OrderDto;
 import de.ait.dto.UserDto;
+import de.ait.models.Grooming;
 import de.ait.models.User;
 import de.ait.models.UserCredential;
 import de.ait.repositories.*;
@@ -150,6 +151,7 @@ public class Main {
                     System.out.println("Заказать услугу из списка");
                     groomingsService.printAllGroomings();
                     newOrder();
+                    newOrder2();
                 }
                 case 0 -> {
                     System.out.println("выход из программы");
@@ -179,7 +181,31 @@ public class Main {
         orderService.add(orderDto);
         System.out.println("Ваши заказы:");
         orderService.searchByUserID(userId).forEach(order -> System.out.println(order));
+    }
 
+    private static void newOrder2() {
+        OrderRepository orderRepository = new OrderRepositoryTextFileImpl("orders.txt");
+        OrderService orderService = new OrderServiceImpl(orderRepository);
+        GroomingsRepository groomingsRepositoryTextFile = new GroomingsRepositoryTextImpl("groomings.txt");
+        GroomingsService groomingsService = new GroomingsServiceImpl(groomingsRepositoryTextFile);
+        UsersRepository usersRepositoryTextFile = new UsersRepositoryTextFileImpl("users.txt");
+        UsersService usersService = new UsersServiceImpl(usersRepositoryTextFile);
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Введите название породы для соответствующей желаемой услуги: ");
+        String breed = scanner.nextLine();
+        Grooming grooming = groomingsService.getGroomingByBreed(breed);
+        System.out.println("Введите свою фамилию: ");
+        String familyName = scanner.nextLine();
+        User user = usersService.getUserBySecondName(familyName);
+        String userId = user.getUserId();
+        System.out.println("Введите дату и время в формате: dd-MM-yyyy, HH-mm  ");
+        String dateTime = scanner.nextLine();
+        OrderDto orderDto = new OrderDto(grooming.getGroomingId(), user.getUserId(), dateTime);
+        orderService.add(orderDto);
+        System.out.println("Ваши заказы:");
+        orderService.searchByUserID(userId).forEach(order -> System.out.println(order));
     }
 
     public static void adminAPI() {

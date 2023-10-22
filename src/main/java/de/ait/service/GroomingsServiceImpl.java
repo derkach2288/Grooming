@@ -30,10 +30,8 @@ public class GroomingsServiceImpl implements GroomingsService {
         List<Grooming> groomings = groomingsRepository.findAll();
         return groomings.stream().map(g -> g.getBreed()).toList();
     }
-
     @Override
     public String findBread(String bread) {
-
         List<Grooming> groomings = groomingsRepository.findAll();
         Grooming groming = groomings.stream()
                 .filter(grooming -> grooming.getBreed().equals(bread)).findFirst()
@@ -43,6 +41,14 @@ public class GroomingsServiceImpl implements GroomingsService {
             return "Такой породы нет";
         } else return groming.toString();
     }
+    @Override
+    public Grooming getGroomingByBreed(String bread) {
+        List<Grooming> groomings = groomingsRepository.findAll();
+        Grooming grooming = groomings.stream()
+                .filter(g -> g.getBreed().equals(bread)).findFirst()
+                .orElseGet(() -> null);
+        return grooming;
+    }
 
     @Override
     public void findGroomingType(String groom) {
@@ -50,6 +56,15 @@ public class GroomingsServiceImpl implements GroomingsService {
         groomings.stream()
                 .filter(grooming -> grooming.getTitle().equals(groom))
                 .forEach(grooming -> System.out.println(grooming));
+    }
+    @Override
+    public Grooming getGroomingByTitle(String grTitle) {
+        List<Grooming> groomings = groomingsRepository.findAll();
+        Grooming groom = groomings.stream()
+                .filter(g -> g.getTitle().equals(grTitle))
+                .findFirst()
+                .orElseGet(() -> null);
+        return groom;
     }
 
     @Override

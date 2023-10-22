@@ -12,6 +12,8 @@ public interface GroomingsService {
     String findBread(String bread);
     List<String> getBreads();
     void findGroomingType(String groom);
+    Grooming getGroomingByTitle(String grTitle);
+    Grooming getGroomingByBreed(String bread);
     List<Grooming> findAll();
     void printAllGroomings();
     void add(GroomingDto groomingDto);
