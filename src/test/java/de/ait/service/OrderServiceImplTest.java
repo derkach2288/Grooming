@@ -32,8 +32,8 @@ class OrderServiceImplTest {
 
     @Test
     void searchByUserID() {
-        orderService.searchByUserID("orderId1");
-        List<Order> actual = orderService.findAll().stream().filter(order -> order.getOrderId().equals("orderId1")).toList();
+        List<Order> actual = orderService.searchByUserID("UserId1");
+//        List<Order> actual = orderService.findAll().stream().filter(order -> order.getOrderId().equals("orderId1")).toList();
         List<Order> expected = new ArrayList<>(List.of(
                 new Order("orderId1", "GroomingId1", "UserId1", "22-11-2023, 10-00")
         ));
