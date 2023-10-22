@@ -2,6 +2,7 @@ package de.ait.models;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class User {
     private String firstName;
@@ -90,5 +91,18 @@ public class User {
                 ", eMail='" + eMail + '\'' +
                 ", userId='" + userId + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equals(firstName, user.firstName) && Objects.equals(secondName, user.secondName) && Objects.equals(breed, user.breed) && Objects.equals(nickname, user.nickname) && Objects.equals(address, user.address) && Objects.equals(eMail, user.eMail) && Objects.equals(userId, user.userId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(firstName, secondName, breed, nickname, address, eMail, userId);
     }
 }

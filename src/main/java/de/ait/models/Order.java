@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 
 public class Order {
     private String orderId;
@@ -66,5 +67,18 @@ public class Order {
                 ", userId='" + userId + '\'' +
                 ", dateTime=" + dateTime +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Order order = (Order) o;
+        return Objects.equals(orderId, order.orderId) && Objects.equals(groomingId, order.groomingId) && Objects.equals(userId, order.userId) && Objects.equals(dateTime, order.dateTime);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(orderId, groomingId, userId, dateTime);
     }
 }

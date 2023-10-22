@@ -1,5 +1,7 @@
 package de.ait.models;
 
+import java.util.Objects;
+
 public class UserCredential {
     private String login;
     private String password;
@@ -28,5 +30,18 @@ public class UserCredential {
     @Override
     public String toString() {
         return "UserCredentials{" + "login='" + login + '\'' + ", password='" + password + '\'' + '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        UserCredential that = (UserCredential) o;
+        return Objects.equals(login, that.login) && Objects.equals(password, that.password);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(login, password);
     }
 }

@@ -1,0 +1,3 @@
+Name1|Surname1|BEAGLE|Sniff|Address 1|name1.name2@gmail.com|11111
+Name2|Surname2|GERMAN SHEPHERD|Lord|Address 2|name2.surname2@gmail.com|22222
+Name3|Surname3|SAMOYED|Snowy|Address 3|name3.surname3@gmail.com|33333
