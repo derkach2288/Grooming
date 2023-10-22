@@ -9,19 +9,19 @@ import java.util.UUID;
 
 public class OrderRepositoryListImpl implements OrderRepository{
 
-    OrderDto orderDto = new OrderDto("groomingId1", "userId1", "22-11-88, 10-00");
     private List<Order> orderList = new ArrayList<>(List.of(
-//            new Order(UUID.randomUUID().toString(), new OrderDto("groomingId1", "userId1", "22-11-88, 10-00"))
-            new Order(UUID.randomUUID().toString(), orderDto.getGroomingId(), orderDto.getUserId(), orderDto.getDateTime())
+            new Order("orderId1", "GroomingId1", "UserId1", "22-11-2023, 10-00"),
+            new Order("orderId2", "GroomingId2", "UserId2", "22-10-2023, 11-00"),
+            new Order("orderId3", "GroomingId3", "UserId3", "22-12-2023, 12-00")
     ));
 
     @Override
     public List<Order> findAll() {
-        return null;
+        return orderList;
     }
 
     @Override
     public void save(Order order) {
-
+        orderList.add(order);
     }
 }
